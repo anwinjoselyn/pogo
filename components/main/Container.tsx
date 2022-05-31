@@ -8,7 +8,7 @@ import Sidebar from './SidebarNew';
 
 export default function Container({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const [state, setState] = useState({ minified: true, isMinified: true });
+  const [state, setState] = useState({ minified: false, isMinified: false });
   //   const [toggleSidebar, setToggleSidebar] = useState({
   //     show: false,
   //     showOnHover: false,
