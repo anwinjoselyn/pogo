@@ -31,3 +31,24 @@ export const sidebarValues: any = [
     children: [{ key: 1, title: 'Info', route: '/pokemons/types/:name' }],
   },
 ];
+
+export const mainCards: any = [
+  {
+    title: 'All Pokemons',
+    description: 'List of all Pokemons',
+    route: '/pokemons',
+    classNames: {},
+  },
+  {
+    title: 'Generations',
+    description: 'List of all Generations',
+    route: '/generations',
+    classNames: {},
+  },
+  {
+    title: 'Types',
+    description: 'List of all Types',
+    route: '/types',
+    classNames: {},
+  },
+];

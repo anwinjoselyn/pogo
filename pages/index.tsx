@@ -1,6 +1,10 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+import { Card } from '../components';
+
+import { mainCards } from '../constants/defaultValues';
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -10,8 +14,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>Welcome to the AJ Poke App</h1>
+      <main className="flex gap-2 p-4">
+        {mainCards.map((card: any) => (
+          <Card key={card.title} {...card} />
+        ))}
       </main>
 
       <footer>Footer</footer>

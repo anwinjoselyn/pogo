@@ -21,7 +21,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div className="flex dark:bg-background-darkest dark:text-gray-lightest ">
+    <div className="flex dark:bg-background-darkest dark:text-blueGreen-light2 ">
       <Head>
         {/* <title>
           HiFaDD - a D&D game for Dungeon Masters and D&D aficianados
@@ -72,7 +72,9 @@ export default function Container({ children }: { children: React.ReactNode }) {
         }
       >
         <Header ftw={router.pathname.includes('/hfftw')} />
-        <div className="p-3 text-theme-text-primary">{children}</div>
+        <div className="p-3 text-blueGreen-darkest dark:text-blueGreen-light2">
+          {children}
+        </div>
       </div>
       {/* <Toaster /> */}
     </div>
