@@ -4,28 +4,28 @@ import { useRouter } from 'next/router';
 // import { Toaster } from 'react-hot-toast';
 
 import Header from './Header';
-import Sidebar from './Sidebar';
+import Sidebar from './SidebarNew';
 
 export default function Container({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [state, setState] = useState({ minified: true, isMinified: true });
-  const [toggleSidebar, setToggleSidebar] = useState({
-    show: false,
-    showOnHover: false,
-  });
-//   const toggleSidebar = (temp?: boolean) => {
-//     setState({
-//       minified: !state.minified,
-//       isMinified: temp ?? state.isMinified,
-//     });
-//   };
+  //   const [toggleSidebar, setToggleSidebar] = useState({
+  //     show: false,
+  //     showOnHover: false,
+  //   });
+  const toggleSidebar = (temp?: boolean) => {
+    setState({
+      minified: !state.minified,
+      isMinified: temp ?? state.isMinified,
+    });
+  };
 
   return (
-    <div className="flex bg-theme-bg">
+    <div className="flex dark:bg-background-darkest dark:text-gray-lightest ">
       <Head>
-        <title>
+        {/* <title>
           HiFaDD - a D&D game for Dungeon Masters and D&D aficianados
-        </title>
+        </title> */}
         <meta
           name="title"
           property="og:title"
@@ -62,7 +62,6 @@ export default function Container({ children }: { children: React.ReactNode }) {
       >
         <Sidebar
           toggleSidebar={toggleSidebar}
-          setToggleSidebar={setToggleSidebar}
           minified={state.minified}
           ftw={router.pathname.includes('/hfftw')}
         />
@@ -73,9 +72,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         }
       >
         <Header ftw={router.pathname.includes('/hfftw')} />
-        <div className="p-3 text-theme-text-primary">
-          {children}
-        </div>
+        <div className="p-3 text-theme-text-primary">{children}</div>
       </div>
       {/* <Toaster /> */}
     </div>

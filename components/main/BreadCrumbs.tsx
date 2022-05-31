@@ -35,9 +35,7 @@ const BreadCrumbs = ({ ftw }: any) => {
     const filteredMenu = menu.filter((item: any) =>
       filterInclude(item, pathname)
     );
-    /**
-     * @todo @Mrigendra to check later if there is a different way to get children for navigation
-     */
+
     if (filteredMenu.length > 0) {
       setTimeout(() => {
         let navigation = sidebarValues.filter(
@@ -76,7 +74,7 @@ const BreadCrumbs = ({ ftw }: any) => {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname !== '/']);
-  console.log('breadcrumbs', state);
+
   return (
     <ul className="flex items-center text-theme-text-footer">
       {/* <li>

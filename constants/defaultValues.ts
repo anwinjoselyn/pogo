@@ -1,6 +1,12 @@
 export const sidebarValues: any = [
   {
     key: 1,
+    title: 'Home',
+    description: 'Poke App',
+    route: '/',
+  },
+  {
+    key: 2,
     title: 'Pokemons',
     description: 'List of all Pokemons',
     route: '/pokemons',
