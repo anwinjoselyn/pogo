@@ -2,14 +2,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import BreadCrumbs from './BreadCrumbs';
-// import useDarkMode from '../../hooks/useDarkMode';
+import useDarkMode from '../../hooks/useDarkMode';
 
 const Header = ({ ftw }: any) => {
+  const [theme, toggleTheme] = useDarkMode();
   const name = 'Anwin';
+  const handleModes = () => {
+    toggleTheme(theme === 'dark' ? 'light' : 'dark');
+  };
   return (
-    <div className="bg-theme-bgNav flex flex-row justify-between content-center items-center h-14 sticky top-0 z-20 pl-8">
+    <div className="top-0 z-10 flex flex-col items-center justify-between bg-white p-4 dark:bg-background-darkest lg:sticky lg:flex-row">
       <BreadCrumbs ftw={ftw} />
-      <div className="flex items-center">
+      <div className="flex items-center pr-4">
         {name ? (
           <>
             <span className="text-theme-text-secondary mr-2">
@@ -20,11 +24,15 @@ const Header = ({ ftw }: any) => {
                 account_circle
               </span>
             </Link>
-            <span className="material-icons text-theme-text-secondary hover:text-theme-text-h2 ml-4 mr-7 self-center cursor-pointer">
-              notifications
-            </span>
           </>
         ) : null}
+        <span
+          className="material-icons-outlined cursor-pointer ml-2"
+          role="presentation"
+          onClick={handleModes}
+        >
+          {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+        </span>
       </div>
     </div>
   );

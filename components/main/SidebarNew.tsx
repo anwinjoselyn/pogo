@@ -74,9 +74,9 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
   };
   console.log('state', state);
   return (
-    <div className="bg-theme-bgNav h-screen sticky top-0">
+    <div className="bg-black-pure h-screen sticky top-0">
       <div
-        className={`px-6 h-14 text-orange-dark cursor-pointer flex items-center`}
+        className={`px-6 h-14 cursor-pointer flex items-center`}
         role="presentation"
         onClick={toggleSidebar}
       >
@@ -87,20 +87,23 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
           height={30}
           className="bg-orange-dark rounded-full"
         /> */}
-        {minified ? '' : <span className="w-full text-right">PokeBubs</span>}
+        {minified ? (
+          ''
+        ) : (
+          <span className="w-full text-orange-bright text-xl">PokeBubs</span>
+        )}
       </div>
       <div className="overflow-y-auto">
         {state?.sidebar?.map((menu: any) => {
-          let menuClass: string =
-            'text-theme-text-secondary hover:text-theme-text-h2';
+          let menuClass: string = 'text-gray-1 hover:text-gray-2';
           if (
             state &&
             (menu.key === state.menuKey || menu.key === state.openMenuKey)
           ) {
             if (menu?.children?.length > 0) {
-              menuClass = 'text-theme-text-secondary';
+              menuClass = 'text-gray-darkest';
             } else {
-              menuClass = 'text-white hover:text-orange-light bg-theme-bg';
+              menuClass = 'text-gray-light hover:text-gray-dark bg-theme-bg';
             }
           }
           return (
@@ -110,7 +113,7 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
               onClick={() =>
                 onMenuClick(
                   state && state.openMenuKey === menu.key ? null : menu.key,
-                  menu.children.length === 0 ? menu.route : null
+                  menu?.children?.length === 0 ? menu.route : null
                 )
               }
               role="presentation"
