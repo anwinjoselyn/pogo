@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import useSWR from 'swr';
 
-import { Card, Info } from '../../components';
+import { Card, Info, RadioSelect } from '../../components';
 
 import fetcher from '../../libs/fetcher';
 
@@ -14,8 +15,10 @@ const NoSSRImage = dynamic(
 );
 
 const Pokemon = ({ imageURL }: { imageURL: any }) => {
+  const [selected, setSelected] = useState('normal');
   const { query } = useRouter();
   const { data } = useSWR(`/api/pokemons/${query.id}`, fetcher);
+  console.log('data', data);
 
   return (
     <div className="p-4">
@@ -56,6 +59,32 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
               <Info
                 title="Max CP"
                 content={data?.data?.maxCPData?.max_cp ?? '---'}
+              />
+            </Card>
+            <Card size="large" classNames={{ body: 'p-2' }} title="Moves">
+              <Info
+                title="Fast"
+                content={data?.data?.movesData?.fast_moves.map(
+                  (m: any, idx: number) => (
+                    <span key={m} className="ml-2">
+                      {m}
+                      {idx !== data?.data?.movesData?.fast_moves.length - 1 &&
+                        ','}
+                    </span>
+                  )
+                )}
+              />
+              <Info
+                title="Charged"
+                content={data?.data?.movesData?.charged_moves.map(
+                  (m: any, idx: number) => (
+                    <span key={m} className="ml-2">
+                      {m}
+                      {idx !==
+                        data?.data?.movesData?.charged_moves.length - 1 && ','}
+                    </span>
+                  )
+                )}
               />
             </Card>
             <Card size="large" classNames={{ body: 'p-2' }} title="Encounter">
@@ -104,8 +133,23 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
             </Card>
           </div>
         </div>
-        <div className="w-1/3 h-full border border-newBlue-light6 pb-14 rounded-md p-2 flex items-center justify-center">
-          <NoSSRImage src={imageURL} width={256} height={256} alt="row_image" />
+        <div className="w-1/3 h-full">
+          <RadioSelect
+            options={[
+              { label: 'Normal', value: 'normal' },
+              { label: 'Shiny', value: 'shiny' },
+            ]}
+            selected={selected}
+            onSelect={(value: string) => setSelected(value)}
+          />
+          <div className="border border-newBlue-light6 pb-14 rounded-md p-2 flex items-center justify-center">
+            <NoSSRImage
+              src={selected === 'normal' ? imageURL.normal : imageURL.shiny}
+              width={256}
+              height={256}
+              alt="row_image"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -115,7 +159,7 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
 export async function getServerSideProps({ params }: { params: any }) {
   let num: any = '';
   let img = '/pokemons/pokemon_icon_';
-  const imgURLEnd = '_00.png';
+  const imgURLEnd = '_00';
   const len = params.id?.length;
   if (len === 1) {
     num = '00' + params.id;
@@ -124,9 +168,11 @@ export async function getServerSideProps({ params }: { params: any }) {
   } else {
     num = params.id;
   }
-  img += num + imgURLEnd;
+  //   img += num + imgURLEnd;
+  const normal = img + num + imgURLEnd + '.png';
+  const shiny = img + num + imgURLEnd + '_shiny' + '.png';
 
-  return { props: { imageURL: img || null } };
+  return { props: { imageURL: { normal, shiny } } };
 }
 
 export default Pokemon;
