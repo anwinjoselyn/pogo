@@ -1,4 +1,4 @@
-export const alolan = {
+export const alolan: any = {
   '103': {
     id: 103,
     name: 'Exeggutor',

@@ -1,4 +1,4 @@
-export const maxCP = [
+export const maxCP: any = [
   {
     form: 'Fall_2019',
     max_cp: 1115,

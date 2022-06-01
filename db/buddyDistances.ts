@@ -1,4 +1,4 @@
-export const buddyDistances = {
+export const buddyDistances: any = {
   '1': [
     {
       distance: 1,

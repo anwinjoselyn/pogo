@@ -1,4 +1,4 @@
-export const shiny = {
+export const shiny: any = {
   '1': {
     found_egg: true,
     found_evolution: false,
