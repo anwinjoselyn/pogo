@@ -72,7 +72,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         }
       >
         <Header ftw={router.pathname.includes('/hfftw')} />
-        <div className="p-3 text-blueGreen-darkest dark:text-blueGreen-light2">
+        <div className="text-blueGreen-darkest dark:text-blueGreen-light2">
           {children}
         </div>
       </div>

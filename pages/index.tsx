@@ -14,13 +14,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex gap-2 p-4">
+      <main className="flex gap-2 p-4 h-screen">
         {mainCards.map((card: any) => (
           <Card key={card.title} {...card} />
         ))}
       </main>
 
-      <footer>Footer</footer>
+      <footer className="sticky bottom-0 bg-newBlue-lightest">Footer</footer>
     </div>
   );
 };
