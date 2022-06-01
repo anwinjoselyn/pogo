@@ -45,7 +45,7 @@ const Card = ({
     >
       {title && (
         <div
-          className={`text-center p-2 text-lg border-b border-gray-1 ${
+          className={`text-center p-2 text-lg border-b border-newBlue-mid1 ${
             classNames.title ?? ''
           }`}
         >

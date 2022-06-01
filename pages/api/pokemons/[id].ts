@@ -17,7 +17,6 @@ import { heightWeightScale } from '../../../db/heightWeightScale';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    console.log('req.query.id', req.query.id);
     const stat = stats.find(
       (pok: any) => pok.pokemon_id === Number(req.query.id)
     );
@@ -52,7 +51,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const scale = heightWeightScale.find(
       (pok: any) => pok.pokemon_id === Number(req.query.id)
     );
-    console.log('type', type);
+
     res.status(200).json({
       data: {
         stats: stat,

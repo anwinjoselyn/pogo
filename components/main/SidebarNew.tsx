@@ -74,7 +74,7 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
   };
   console.log('state', state);
   return (
-    <div className="bg-newBlue-darkest h-screen sticky top-0">
+    <div className="bg-newBlue-light dark:bg-newBlue-darkest h-screen sticky top-0 shadow-exp dark:shadow-sidebar">
       <div
         className={`px-6 h-14 cursor-pointer flex items-center`}
         role="presentation"

@@ -21,7 +21,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div className="flex dark:bg-background-darkest dark:text-blueGreen-light2 ">
+    <div className="flex dark:bg-newBlue-darkest dark:text-blueGreen-light2 ">
       <Head>
         {/* <title>
           HiFaDD - a D&D game for Dungeon Masters and D&D aficianados
@@ -55,11 +55,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
           href="/images/favicon-16x16.png"
         />
       </Head>
-      <div
-        className={
-          state.minified ? 'w-20' : 'w-1/4 md:w-1/6 sm:w-1/5 lg:w-1/12'
-        }
-      >
+      <div className={state.minified ? 'w-20' : 'w-1/4 md:w-[250px]'}>
         <Sidebar
           toggleSidebar={toggleSidebar}
           minified={state.minified}
