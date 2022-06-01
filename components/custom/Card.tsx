@@ -34,24 +34,32 @@ const Card = ({
         break;
     }
   }
-  return (
-    <Link href={route}>
-      <div
-        className={`${
-          classNames.wrapper ?? 'bg-newBlue-mid'
-        } rounded-md p-2 ${sizeClass} ${
-          route === '' ? 'disabled' : 'cursor-pointer'
-        }`}
-      >
-        {title && (
-          <div className={`text-center p-2 ${classNames.title ?? ''}`}>
-            {title}
-          </div>
-        )}
-        <div className={`${classNames.body ?? ''}`}>{children}</div>
-        {footer && <div className={`${classNames.footer ?? ''}`}>{footer}</div>}
-      </div>
-    </Link>
+
+  const theCard = () => (
+    <div
+      className={`${
+        classNames.wrapper ?? 'bg-newBlue-mid dark:bg-newBlue-dark1'
+      } rounded-md p-2 ${sizeClass} ${
+        route === '' ? 'disabled' : 'cursor-pointer'
+      }`}
+    >
+      {title && (
+        <div
+          className={`text-center p-2 text-lg border-b border-gray-1 ${
+            classNames.title ?? ''
+          }`}
+        >
+          {title}
+        </div>
+      )}
+      <div className={`${classNames.body ?? ''}`}>{children}</div>
+      {footer && <div className={`${classNames.footer ?? ''}`}>{footer}</div>}
+    </div>
   );
+
+  if (route) {
+    return <Link href={route}>{theCard()}</Link>;
+  }
+  return <>{theCard()}</>;
 };
 export default Card;

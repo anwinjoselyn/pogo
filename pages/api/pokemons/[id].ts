@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 import { stats } from '../../../db/stats';
 import { released } from '../../../db/released';
@@ -40,7 +40,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const encounter = encounterData.find(
       (pok: any) => pok.pokemon_id === Number(req.query.id)
     );
-    const type = types.find((pok: any) => pok.type_id === Number(req.query.id));
+    const type = types.find(
+      (pok: any) => pok.pokemon_id === Number(req.query.id)
+    );
     const movesData = moves.find(
       (pok: any) => pok.pokemon_id === Number(req.query.id)
     );
@@ -50,7 +52,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const scale = heightWeightScale.find(
       (pok: any) => pok.pokemon_id === Number(req.query.id)
     );
-
+    console.log('type', type);
     res.status(200).json({
       data: {
         stats: stat,
