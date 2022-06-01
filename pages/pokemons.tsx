@@ -8,9 +8,16 @@ const Pokemons = () => {
   const { data } = useSWR(`/api/pokemons/names`, fetcher);
   console.log('data', data);
   return (
-    <div>
-      <h1>All Pokemons</h1>
-      <div>Pokemon Cards</div>
+    <div className="p-4">
+      <h1 className="text-center mb-4 font-semibold text-lg">All Pokemons</h1>
+      <div className="flex gap-2 flex-wrap">
+        {data?.names &&
+          data.names.map((name: any) => (
+            <Card key={name.id} size="small" route={`/pokemons/:${name.id}`}>
+              {name.name}
+            </Card>
+          ))}
+      </div>
     </div>
   );
 };

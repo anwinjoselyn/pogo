@@ -4,14 +4,14 @@ const Card = ({
   title,
   footer,
   children,
-  classNames,
+  classNames = {},
   size = 'default',
   route = '',
 }: {
-  title: string;
-  footer: any;
+  title?: string;
+  footer?: any;
   children: any;
-  classNames: {
+  classNames?: {
     wrapper?: string;
     title?: string;
     body?: string;
