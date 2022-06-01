@@ -13,10 +13,9 @@ const NoSSRImage = dynamic(
   }
 );
 
-const Pokemons = ({ imageURL }: { imageURL: any }) => {
+const Pokemon = ({ imageURL }: { imageURL: any }) => {
   const { query } = useRouter();
   const { data } = useSWR(`/api/pokemons/${query.id}`, fetcher);
-  console.log('imageURL', imageURL);
 
   return (
     <div className="p-4">
@@ -130,4 +129,4 @@ export async function getServerSideProps({ params }: { params: any }) {
   return { props: { imageURL: img || null } };
 }
 
-export default Pokemons;
+export default Pokemon;
