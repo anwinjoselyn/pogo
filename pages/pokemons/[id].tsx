@@ -22,11 +22,11 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
 
   return (
     <div className="p-4">
-      <h1 className="text-center mb-4 font-semibold text-lg">
-        {data?.data?.stats?.pokemon_name}
-      </h1>
       <div className="flex">
         <div className="w-2/3">
+          <h1 className="text-center mb-4 font-semibold text-lg">
+            {data?.data?.stats?.pokemon_name}
+          </h1>
           <div className="flex gap-2 justify-center flex-wrap">
             <Card size="large" classNames={{ body: 'p-2' }} title="Stats">
               <Info
@@ -90,21 +90,44 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
             <Card size="large" classNames={{ body: 'p-2' }} title="Encounter">
               <Info
                 title="Base Capture Rate"
-                content={`${data?.data?.encounter?.base_capture_rate * 100}%`}
+                content={`${Math.round(
+                  data?.data?.encounter?.base_capture_rate * 100
+                )}%`}
               />
               <Info
                 title="Base Flee Rate"
-                content={`${data?.data?.encounter?.base_flee_rate * 100}%`}
+                content={`${Math.round(
+                  data?.data?.encounter?.base_flee_rate * 100
+                )}%`}
               />
               <Info
                 title="Base Attack Probability"
-                content={`${data?.data?.encounter?.attack_probability * 100}%`}
+                content={`${Math.round(
+                  data?.data?.encounter?.attack_probability * 100
+                )}%`}
               />
               <Info
                 title="Base Dodge Probability"
-                content={`${data?.data?.encounter?.dodge_probability * 100}%`}
+                content={`${Math.round(
+                  data?.data?.encounter?.dodge_probability * 100
+                )}%`}
               />
             </Card>
+            {data?.data?.evolutionData?.evolutions?.map(
+              (e: any, idx: number) => (
+                <Card
+                  key={idx}
+                  size="large"
+                  classNames={{ body: 'p-2' }}
+                  title={`Evolution ${idx + 1}`}
+                  route={`/pokemons/${e.pokemon_id}`}
+                >
+                  <Info title="Name" content={e.pokemon_name} />
+                  <Info title="Candy Required" content={e.candy_required} />
+                  <Info title="Form" content={e.form} />
+                </Card>
+              )
+            )}
             <Card size="large" classNames={{ body: 'p-2' }} title="Shiny">
               <Info
                 title="From Egg?"

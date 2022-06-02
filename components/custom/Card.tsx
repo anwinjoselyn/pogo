@@ -37,8 +37,8 @@ const Card = ({
 
   const theCard = () => (
     <div
-      className={`${
-        classNames.wrapper ?? 'bg-newBlue-mid dark:bg-newBlue-dark1'
+      className={`bg-newBlue-mid dark:bg-newBlue-dark1 ${
+        classNames.wrapper ?? ''
       } rounded-md p-2 ${sizeClass} ${
         route === '' ? 'disabled' : 'cursor-pointer'
       }`}
