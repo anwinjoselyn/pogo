@@ -51,7 +51,7 @@ const Pokemons = () => {
               } else {
                 num = name.id;
               }
-              let normal = '';
+              let url = '';
               const multipleForms = [
                 201, 386, 412, 413, 421, 422, 423, 479, 487, 550, 555, 585, 586,
                 641, 642, 645, 648, 646, 649,
@@ -67,14 +67,13 @@ const Pokemons = () => {
                 867, 868, 869, 870, 888, 889, 893,
               ];
               if (multipleForms.includes(name.id)) {
-                normal = img + num + '_11.png';
+                url = img + num + '_11.png';
               } else if (newImages.includes(name.id)) {
-                normal = '/pokemons/' + num + '.webp';
+                url = '/pokemons/' + num + '.webp';
               } else {
-                normal = img + num + imgURLEnd;
+                url = img + num + imgURLEnd;
               }
-              // console.log('normal', normal);
-              // const shiny = img + num + imgURLEnd + '_shiny' + '.png';
+
               return (
                 <Card
                   key={name.id}
@@ -88,7 +87,7 @@ const Pokemons = () => {
                 >
                   <div className="flex justify-center items-center flex-col p-2">
                     <NoSSRImage
-                      src={normal}
+                      src={url}
                       width={100}
                       height={100}
                       alt="row_image"

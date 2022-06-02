@@ -7,6 +7,8 @@ import { Card, Info, RadioSelect } from '../../components';
 
 import fetcher from '../../libs/fetcher';
 
+// import placeholder from '/pokemons/placeholder.jpeg';
+
 const NoSSRImage = dynamic(
   () => import('../../components/custom/CustomImage'),
   {
@@ -191,11 +193,39 @@ export async function getServerSideProps({ params }: { params: any }) {
   } else {
     num = params.id;
   }
+  let url = '';
+  let shinyURL = '';
+  const multipleForms = [
+    201, 386, 412, 413, 421, 422, 423, 479, 487, 550, 555, 585, 586, 641, 642,
+    645, 648, 646, 649,
+  ];
+  const newImages = [
+    669, 670, 671, 676, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718,
+    719, 720, 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734,
+    735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 748, 749,
+    750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764,
+    765, 766, 767, 768, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792,
+    819, 820, 821, 822, 823, 824, 831, 832, 833, 834, 835, 836, 862, 863, 865,
+    866, 867, 868, 869, 870, 888, 889, 893,
+  ];
+  if (multipleForms.includes(Number(params.id))) {
+    url = img + num + '_11.png';
+    shinyURL = img + num + '_11_shiny.png';
+    console.log('multiple forms');
+  } else if (newImages.includes(Number(params.id))) {
+    url = '/pokemons/' + num + '.webp';
+    shinyURL = '/pokemons/placeholder.jpeg';
+    console.log('newImages');
+  } else {
+    url = img + num + imgURLEnd + '.png';
+    shinyURL = img + num + imgURLEnd + '_shiny' + '.png';
+    console.log('else');
+  }
   //   img += num + imgURLEnd;
-  const normal = img + num + imgURLEnd + '.png';
-  const shiny = img + num + imgURLEnd + '_shiny' + '.png';
+  //   const normal = img + num + imgURLEnd + '.png';
+  //   const shiny = img + num + imgURLEnd + '_shiny' + '.png';
 
-  return { props: { imageURL: { normal, shiny } } };
+  return { props: { imageURL: { normal: url, shiny: shinyURL } } };
 }
 
 export default Pokemon;
