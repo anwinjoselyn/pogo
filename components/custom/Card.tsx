@@ -8,7 +8,7 @@ const Card = ({
   size = 'default',
   route = '',
 }: {
-  title?: string;
+  title?: any;
   footer?: any;
   children: any;
   classNames?: {

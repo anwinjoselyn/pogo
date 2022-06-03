@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import useSWR from 'swr';
 
 import { Card, Info, RadioSelect } from '../../components';
@@ -26,9 +27,34 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
     <div className="p-4">
       <div className="flex">
         <div className="w-2/3">
-          <h1 className="text-center mb-4 font-semibold text-lg">
-            {data?.data?.stats?.pokemon_name}
-          </h1>
+          <div className="flex justify-between px-4 mb-6">
+            {data?.data?.pages?.prev?.id ? (
+              <Link href={`/pokemons/${data?.data?.pages?.prev?.id}`}>
+                <div className="flex items-center cursor-pointer">
+                  <span className="material-icons">keyboard_arrow_left</span>
+                  {data?.data?.pages?.prev?.name}
+                </div>
+              </Link>
+            ) : (
+              ''
+            )}
+            <h1 className="text-center mb-4 font-semibold text-lg">
+              {data?.data?.stats?.pokemon_name}
+              {!data?.data?.isReleased && (
+                <span className="text-sm ml-2">Not Released</span>
+              )}
+            </h1>
+            {data?.data?.pages?.next?.id ? (
+              <Link href={`/pokemons/${data?.data?.pages?.next?.id}`}>
+                <div className="flex items-center cursor-pointer">
+                  {data?.data?.pages?.next?.name}
+                  <span className="material-icons">keyboard_arrow_right</span>
+                </div>
+              </Link>
+            ) : (
+              ''
+            )}
+          </div>
           <div className="flex gap-2 justify-center flex-wrap">
             <Card size="large" classNames={{ body: 'p-2' }} title="Stats">
               <Info
@@ -115,21 +141,6 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
                 )}%`}
               />
             </Card>
-            {data?.data?.evolutionData?.evolutions?.map(
-              (e: any, idx: number) => (
-                <Card
-                  key={idx}
-                  size="large"
-                  classNames={{ body: 'p-2' }}
-                  title={`Evolution ${idx + 1}`}
-                  route={`/pokemons/${e.pokemon_id}`}
-                >
-                  <Info title="Name" content={e.pokemon_name} />
-                  <Info title="Candy Required" content={e.candy_required} />
-                  <Info title="Form" content={e.form} />
-                </Card>
-              )
-            )}
             <Card size="large" classNames={{ body: 'p-2' }} title="Shiny">
               <Info
                 title="From Egg?"
@@ -175,6 +186,72 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
               alt="row_image"
             />
           </div>
+          {data?.data?.evolutionData?.evolutions?.length > 0 && (
+            <div className="flex flex-col justify-center items-center">
+              <div className="my-3 text-center underline">Evolutions</div>
+              {data?.data?.evolutionData?.evolutions?.map(
+                (e: any, idx: number) => {
+                  const id = `${e.pokemon_id}`;
+                  let num: any = '';
+                  let img = '/pokemons/pokemon_icon_';
+                  const imgURLEnd = '_00.png';
+                  const len = id.length;
+                  if (len === 1) {
+                    num = '00' + e.pokemon_id;
+                  } else if (len === 2) {
+                    num = '0' + e.pokemon_id;
+                  } else {
+                    num = e.pokemon_id;
+                  }
+                  let url = '';
+                  const multipleForms = [
+                    201, 386, 412, 413, 421, 422, 423, 479, 487, 550, 555, 585,
+                    586, 641, 642, 645, 648, 646, 649,
+                  ];
+                  const newImages = [
+                    669, 670, 671, 676, 708, 709, 710, 711, 712, 713, 714, 715,
+                    716, 717, 718, 719, 720, 722, 723, 724, 725, 726, 727, 728,
+                    729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740,
+                    741, 742, 743, 744, 745, 746, 747, 748, 749, 750, 751, 752,
+                    753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764,
+                    765, 766, 767, 768, 782, 783, 784, 785, 786, 787, 788, 789,
+                    790, 791, 792, 819, 820, 821, 822, 823, 824, 831, 832, 833,
+                    834, 835, 836, 862, 863, 865, 866, 867, 868, 869, 870, 888,
+                    889, 893,
+                  ];
+                  if (multipleForms.includes(e.pokemon_id)) {
+                    url = img + num + '_11.png';
+                  } else if (newImages.includes(e.pokemon_id)) {
+                    url = '/pokemons/' + num + '.webp';
+                  } else {
+                    url = img + num + imgURLEnd;
+                  }
+
+                  return (
+                    <Card
+                      key={idx}
+                      size="large"
+                      classNames={{ body: 'p-2' }}
+                      title={e.pokemon_name}
+                      route={`/pokemons/${e.pokemon_id}`}
+                    >
+                      {/* <Info title="Name" content={e.pokemon_name} /> */}
+                      <Info title="Candy Required" content={e.candy_required} />
+                      <Info title="Form" content={e.form} />
+                      <div className="rounded-md p-2 flex items-center justify-center">
+                        <NoSSRImage
+                          src={url}
+                          width={100}
+                          height={100}
+                          alt="row_image"
+                        />
+                      </div>
+                    </Card>
+                  );
+                }
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

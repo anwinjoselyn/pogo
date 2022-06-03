@@ -20,9 +20,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const stat = stats.find(
       (pok: any) => pok.pokemon_id === Number(req.query.id)
     );
-    const isReleased = !!Object.keys(released).find(
-      (key: any) => key === req.query.id
+    const isReleased = !!released.find(
+      (pok: any) => pok.id === Number(req.query.id)
     );
+    let pages: any = {};
+    if (isReleased && typeof req.query.id === 'string') {
+      const index = released.findIndex(
+        (pok: any) => pok.id === Number(req.query.id)
+      );
+      const prev = index > 0 ? released[index - 1] : null;
+      const next = index < released.length - 1 ? released[index + 1] : null;
+      pages = {
+        prev,
+        next,
+      };
+    }
     const canNest = !!Object.keys(nesting).find(
       (key: any) => key === req.query.id
     );
@@ -34,8 +46,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       (typeof req.query.id === 'string' && alolan[req.query.id]) ?? {};
     const dittoData: any =
       (typeof req.query.id === 'string' && possibleDittos[req.query.id]) ?? {};
-    const maxCPData: any =
-      (typeof req.query.id === 'string' && maxCP[req.query.id]) ?? {};
+    const maxCPData: any = maxCP.find(
+      (pok: any) => pok.pokemon_id === Number(req.query.id)
+    );
     const encounter = encounterData.find(
       (pok: any) => pok.pokemon_id === Number(req.query.id)
     );
@@ -67,6 +80,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         movesData,
         evolutionData,
         scale,
+        pages,
       },
     });
   } catch (error) {
