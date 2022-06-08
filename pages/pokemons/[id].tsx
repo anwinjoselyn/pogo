@@ -8,8 +8,6 @@ import { Card, Info, RadioSelect } from '../../components';
 
 import fetcher from '../../libs/fetcher';
 
-// import placeholder from '/pokemons/placeholder.jpeg';
-
 const NoSSRImage = dynamic(
   () => import('../../components/custom/CustomImage'),
   {
@@ -21,7 +19,6 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
   const [selected, setSelected] = useState('normal');
   const { query } = useRouter();
   const { data } = useSWR(`/api/pokemons/${query.id}`, fetcher);
-  console.log('data', data);
 
   return (
     <div className="p-4">
