@@ -62,7 +62,7 @@ export const sidebarValues: any = [
           {
             key: 1,
             title: 'Info',
-            route: '/pokemons/generations/:name',
+            route: '/generations/:name',
             hide: true,
           },
         ],
@@ -75,7 +75,12 @@ export const sidebarValues: any = [
     route: '/types',
     icon: 'key',
     children: [
-      { key: 1, title: 'Info', route: '/pokemons/types/:name', hide: true },
+      {
+        key: 1,
+        title: 'All',
+        route: '/types',
+        children: [{ key: 1, title: 'All', route: '/types/:name', hide: true }],
+      },
     ],
   },
 ];

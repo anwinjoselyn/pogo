@@ -16,7 +16,7 @@ const NoSSRImage = dynamic(
 const Pokemons = () => {
   const [search, setSearch] = useState('');
   const { data } = useSWR(`/api/pokemons/names`, fetcher);
-  console.log('data', data);
+
   return (
     <div className="p-4">
       <div className="flex justify-between p-3">
