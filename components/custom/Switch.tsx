@@ -13,7 +13,7 @@ export const Switch = ({
   label?: any;
 }) => (
   <div
-    className={`flex items-center justify-center ${classNames?.wrapper ?? ''}`}
+    className={`flex items-center justify-center cursor-pointer ${classNames?.wrapper ?? ''}`}
     role="presentation"
     onClick={() => onChange(!on)}
   >
