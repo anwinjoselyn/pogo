@@ -27,9 +27,6 @@ export const Best = () => {
     `/api/best/${selected.toLowerCase()}`,
     fetcher
   );
-  console.log('selected', selected);
-  console.log('pokemons', pokemons);
-  console.log('forms', forms);
 
   const handleSelect = (value: string) => {
     forms[value].selected = !forms[value].selected;
@@ -73,7 +70,9 @@ export const Best = () => {
             822, 823, 824, 831, 832, 833, 834, 835, 836, 862, 863, 865, 866,
             867, 868, 869, 870, 888, 889, 893,
           ];
-          if (multipleForms.includes(pokemon.id)) {
+          if (pokemon.form === 'Mega') {
+            url = img + num + '_51.png';
+          } else if (multipleForms.includes(pokemon.id)) {
             url = img + num + '_11.png';
           } else if (newImages.includes(pokemon.id)) {
             url = '/pokemons/' + num + '.webp';
@@ -131,7 +130,6 @@ export const Best = () => {
               </td>
               <td>
                 <div className="flex items-center gap-2">
-                  {pokemon.qm}
                   <NoSSRImage
                     src={
                       types.find(
@@ -143,11 +141,11 @@ export const Best = () => {
                     height={20}
                     alt="icon"
                   />
+                  {pokemon.qm}
                 </div>
               </td>
               <td>
                 <div className="flex items-center gap-2">
-                  {pokemon.cm}
                   <NoSSRImage
                     src={
                       types.find(
@@ -159,6 +157,7 @@ export const Best = () => {
                     height={20}
                     alt="icon"
                   />
+                  {pokemon.cm}
                 </div>
               </td>
               <td>{pokemon.DPS.toLocaleString()}</td>
