@@ -28,8 +28,8 @@ const Pokemons = () => {
           <RadioSelect
             options={[
               { label: 'All', value: 'all' },
-              ...Object.keys(generations?.generations).map((key) => ({
-                label: key,
+              ...Object.keys(generations?.generations).map((key, index) => ({
+                label: `${generations?.generationMap[key]} (${index + 1})`,
                 value: key,
               })),
             ]}

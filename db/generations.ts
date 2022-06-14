@@ -4481,3 +4481,14 @@ export const generations = {
     },
   ],
 };
+
+export const generationMap = {
+  'Generation 1': 'Kanto',
+  'Generation 2': 'Johto',
+  'Generation 3': 'Hoenn',
+  'Generation 4': 'Sinnoh',
+  'Generation 5': 'Unova',
+  'Generation 6': 'Kalos',
+  'Generation 7': 'Alola',
+  'Generation 8': 'Galar',
+};
