@@ -72,11 +72,11 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
       router.replace(route);
     }
   };
-  console.log('state', state);
+
   return (
     <div className="bg-newBlue-light dark:bg-newBlue-darkest h-screen sticky top-0 shadow-exp dark:shadow-sidebar">
       <div
-        className={`px-6 h-14 cursor-pointer flex items-center`}
+        className={`cursor-pointer flex items-center justify-center bg-newBlue-mid1 shadow-header p-4`}
         role="presentation"
         onClick={toggleSidebar}
       >
@@ -90,26 +90,26 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
         {minified ? (
           ''
         ) : (
-          <span className="w-full text-orange-bright text-xl">PokeBubs</span>
+          <span className="text-newBlue-darkest  text-xl">PokeBubs</span>
         )}
       </div>
       <div className="overflow-y-auto">
         {state?.sidebar?.map((menu: any) => {
-          let menuClass: string = 'text-gray-1 hover:text-gray-2';
+          let menuClass: string = 'text-newBlue-light5 hover:text-newBlue-light2 hover:bg-newBlue-dark';
           if (
             state &&
             (menu.key === state.menuKey || menu.key === state.openMenuKey)
           ) {
             if (menu?.children?.length > 0) {
-              menuClass = 'text-gray-darkest';
+              menuClass = 'text-newBlue-light2 hover:bg-newBlue-mid2';
             } else {
-              menuClass = 'text-gray-light hover:text-gray-dark bg-theme-bg';
+              menuClass = 'text-newBlue-light2 hover:text-newBlue-light5';
             }
           }
           return (
             <div
               key={menu.key}
-              className={`cursor-pointer ${menuClass}`}
+              className={`cursor-pointer border-b border-newBlue-dark1 ${menuClass}`}
               onClick={() =>
                 onMenuClick(
                   state && state.openMenuKey === menu.key ? null : menu.key,
@@ -119,7 +119,7 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
               role="presentation"
             >
               <div
-                className={`text-lg flex items-center p-2 ${
+                className={`text-lg flex items-center px-2 py-5 ${
                   minified ? 'justify-center' : ''
                 }`}
               >
@@ -140,7 +140,7 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
                       menu.key === state.menuKey
                     ) {
                       subMenuClass =
-                        'bg-theme-bg text-orange-light hover:text-white ';
+                        'hover:text-white bg-newBlue-mid2 hover:bg-newBlue-dark';
                     } else {
                       subMenuClass =
                         'text-theme-text-secondary hover:text-theme-text-h2';
