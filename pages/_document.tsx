@@ -55,27 +55,10 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone"
             rel="stylesheet"
           ></link>
-          {/* <script
-              src="https://www.google.com/recaptcha/api.js"
-              async
-              defer
-            ></script> */}
-          {typeof window !== 'undefined' && (
-            <script>
-              {/* {`  const root: any = window.document.documentElement;
-                    const isDarkSet = localStorage.theme && localStorage.theme === 'dark';
-                    const isDarkPreferred = window.matchMedia(
-                      '(prefers-color-scheme: dark)'
-                    ).matches;
-                    if (isDarkSet && isDarkPreferred) {
-                      root.classList.remove(theme);
-                      root.classList.add(theme);
-                    } else {
-                      root.classList.remove(theme);
-                    }
-              `} */}
-            </script>
-          )}
+          <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+          ></link>
         </Head>
         <body className="overscroll-none">
           <Main />

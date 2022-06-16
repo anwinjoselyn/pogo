@@ -32,10 +32,6 @@ export default function Container({ children }: { children: React.ReactNode }) {
           content="HiFaDD - a D&D game for Dungeon Masters and D&D aficianados"
           key="title"
         />
-        <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
-        ></link>
         <link rel="shortcut icon" href="/images/favicon.ico" />
         <link
           rel="apple-touch-icon"
