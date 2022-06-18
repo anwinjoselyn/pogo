@@ -33,7 +33,7 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
                 </div>
               </Link>
             ) : (
-              ''
+              <div className="" />
             )}
             <h1 className="text-center mb-4 font-semibold text-lg">
               {data?.data?.stats?.pokemon_name}
@@ -49,7 +49,7 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
                 </div>
               </Link>
             ) : (
-              ''
+              <div className="" />
             )}
           </div>
           <div className="flex gap-2 justify-center flex-wrap">
@@ -175,7 +175,7 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
             selected={selected}
             onSelect={(value: string) => setSelected(value)}
           />
-          <div className="border border-newBlue-light6 pb-14 rounded-md p-2 flex items-center justify-center">
+          <div className="border border-new-general-5 pb-14 rounded-md p-2 flex items-center justify-center">
             <NoSSRImage
               src={selected === 'normal' ? imageURL.normal : imageURL.shiny}
               width={256}

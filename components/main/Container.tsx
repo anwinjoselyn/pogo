@@ -53,6 +53,9 @@ export default function Container({ children }: { children: React.ReactNode }) {
           sizes="16x16"
           href="/images/favicon-16x16.png"
         />
+        <title>The PoGoStop</title>
+        <meta name="description" content="A Pokemon Go fan info app" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={state.minified ? 'w-20' : 'w-1/4 md:w-[250px]'}>
         <Sidebar
@@ -74,7 +77,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         >
           {theme === 'dark' ? 'light_mode' : 'dark_mode'}
         </span>
-        <div className="h-full flex">{children}</div>
+        <div className="h-full text-new-dark-5">{children}</div>
         <Footer />
       </div>
       {/* <Toaster /> */}

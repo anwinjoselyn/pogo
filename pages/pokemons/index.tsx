@@ -18,7 +18,7 @@ const Pokemons = () => {
   const { data } = useSWR(`/api/pokemons/names`, fetcher);
 
   return (
-    <div className="p-4">
+    <div className="p-4 text-new-dark-8">
       <div className="flex justify-between p-3 sticky top-0 bg-white z-10">
         <h1 className="text-center mb-4 font-semibold text-lg">All Pokemons</h1>
         <Input
@@ -82,7 +82,7 @@ const Pokemons = () => {
                   title={name.name}
                   classNames={{
                     wrapper:
-                      'hover:shadow-hover hover:border',
+                      'hover:shadow-hover hover:border border border-new-normal-5',
                   }}
                 >
                   <div className="flex justify-center items-center flex-col p-2">

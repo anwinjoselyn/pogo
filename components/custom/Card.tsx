@@ -38,14 +38,14 @@ const Card = ({
   const theCard = () => (
     <div
       className={`${
-        classNames.wrapper ?? ''
+        classNames.wrapper ?? 'border border-new-normal-3 hover:shadow-hover'
       } rounded-md p-2 ${sizeClass} ${
         route === '' ? 'disabled' : 'cursor-pointer'
       }`}
     >
       {title && (
         <div
-          className={`text-center p-2 text-lg border-b ${
+          className={`text-center p-2 text-lg border-b border-new-light-3 ${
             classNames.title ?? ''
           }`}
         >

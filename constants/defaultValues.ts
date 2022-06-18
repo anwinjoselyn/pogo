@@ -113,6 +113,12 @@ export const mainCards: any = [
     route: '/types',
     classNames: {},
   },
+  {
+    title: 'Best by Type',
+    description: 'Best Pokemons by Type',
+    route: '/types',
+    classNames: {},
+  },
 ];
 
 export const types = [

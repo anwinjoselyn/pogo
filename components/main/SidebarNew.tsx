@@ -91,7 +91,7 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
         {minified ? (
           ''
         ) : (
-          <span className="text-xl text-trial-light">The PokeStop</span>
+          <span className="text-xl text-trial-light">The PoGoStop</span>
         )}
       </div>
       <div className="overflow-y-auto">
@@ -102,7 +102,7 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
             (menu.key === state.menuKey || menu.key === state.openMenuKey)
           ) {
             if (state.menuKey === menu.key) {
-              menuClass = 'bg-trial-sidebar shadow-header';
+              menuClass = 'bg-trial-header text-trial-light2 shadow-header';
             } else {
               menuClass = 'hover:bg-trial-header hover:text-trial-light2';
             }
