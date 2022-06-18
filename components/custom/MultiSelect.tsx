@@ -29,10 +29,10 @@ const MultiSelect = ({
       {keys.map((key: any) => (
         <li
           key={key}
-          className={`rounded-md px-3 py-1 font-semibold mx-1 cursor-pointer flex items-center justify-center ${
+          className={`rounded-md px-3 py-1 mx-1 cursor-pointer flex items-center justify-center ${
             options[key]?.selected
-              ? ''
-              : ''
+              ? 'bg-new-general-1 text-new-light-4'
+              : 'text-new-light-1'
           } ${classNames?.option ?? ''}`}
           onClick={() => onSelect(key)}
           role="presentation"

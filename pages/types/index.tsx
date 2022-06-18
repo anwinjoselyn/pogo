@@ -27,11 +27,11 @@ const Types = () => {
         onSelect={(value: string) => setSelected(value)}
         classNames={{
           wrapper: 'gap-2 px-6',
-          option: 'w-40 border rounded-lg p-2',
+          option: 'w-40 rounded-lg p-2',
         }}
       />
       {selected && (
-        <h1 className="text-center my-4">All {selected} Type Pokemons</h1>
+        <h1 className="text-center mb-4 mt-8 font-semibold underline">All {selected} Type Pokemons</h1>
       )}
       <div className="flex gap-4 flex-wrap mt-6">
         {pokemons?.types &&
@@ -84,7 +84,7 @@ const Types = () => {
                   title={pokemon.pokemon_name}
                   classNames={{
                     wrapper:
-                      'hover:shadow-hover hover:border',
+                      'hover:shadow-hover hover:border border border-new-light-4',
                   }}
                 >
                   <div className="flex justify-center items-center flex-col p-2">

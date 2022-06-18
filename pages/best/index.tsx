@@ -96,7 +96,7 @@ export const Best = () => {
                     <div>
                       {pokemon.name}
                       {pokemon.form && (
-                        <span className="text-sm text-gray-4 ml-2">
+                        <span className="text-sm text-new-light-2 ml-2">
                           ({pokemon.form})
                         </span>
                       )}
@@ -178,19 +178,19 @@ export const Best = () => {
         onSelect={(value: string) => setSelected(value)}
         classNames={{
           wrapper: 'gap-2 px-6',
-          option: 'w-40 border rounded-lg p-2',
+          option: 'w-40 rounded-lg p-2',
         }}
       />
-      <div className="flex items-center justify-between px-10 border-t border-b mt-4">
+      <div className="flex items-center justify-between px-10 border-t border-b mt-4 border-new-normal-5">
         <div>Extreme Weather</div>
         <div className="flex flex-col items-center">
-          <div className="my-3">Show Forms</div>
+          <div className="my-3 font-semibold">Forms</div>
           <MultiSelect
             options={forms}
             onSelect={(value: string) => handleSelect(value)}
             classNames={{
               wrapper: 'gap-2 px-6',
-              option: 'w-40 border rounded-lg p-2',
+              option: 'w-40 rounded-lg p-2',
             }}
           />
         </div>
@@ -201,7 +201,7 @@ export const Best = () => {
         />
       </div>
       {selected && (
-        <h1 className="text-center my-4">Best {selected} Type Pokemons</h1>
+        <h1 className="text-center mb-4 mt-8 font-semibold underline">Best {selected} Type Pokemons</h1>
       )}
       <div className="px-6">
         {pokemons && pokemons[main ? 'main' : 'general'] && (
