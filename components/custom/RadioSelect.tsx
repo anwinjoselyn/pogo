@@ -31,7 +31,7 @@ const RadioSelect = ({
         key={option.value}
         className={`rounded-md px-3 py-1 font-semibold mx-1 cursor-pointer flex items-center ${
           selected === option.value
-            ? ''
+            ? 'bg-new-general-5 text-new-light-4'
             : ''
         } ${classNames?.option ?? ''}`}
         onClick={() => onSelect(option.value)}
