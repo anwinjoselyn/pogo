@@ -80,7 +80,7 @@ export const Best = () => {
             url = img + num + imgURLEnd;
           }
           return (
-            <tr key={idx} className="border-b border-blueGreen-dark">
+            <tr key={idx} className="border-b">
               <td>{pokemon.id}</td>
               <td>
                 <div className="flex items-center">
@@ -178,10 +178,10 @@ export const Best = () => {
         onSelect={(value: string) => setSelected(value)}
         classNames={{
           wrapper: 'gap-2 px-6',
-          option: 'w-40 border border-gray-300 rounded-lg p-2',
+          option: 'w-40 border rounded-lg p-2',
         }}
       />
-      <div className="flex items-center justify-between px-10 border-t border-b border-gray-darkest mt-4">
+      <div className="flex items-center justify-between px-10 border-t border-b mt-4">
         <div>Extreme Weather</div>
         <div className="flex flex-col items-center">
           <div className="my-3">Show Forms</div>
@@ -190,7 +190,7 @@ export const Best = () => {
             onSelect={(value: string) => handleSelect(value)}
             classNames={{
               wrapper: 'gap-2 px-6',
-              option: 'w-40 border border-gray-300 rounded-lg p-2',
+              option: 'w-40 border rounded-lg p-2',
             }}
           />
         </div>

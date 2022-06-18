@@ -19,7 +19,7 @@ const Input = ({
     >
       {field?.label && (
         <label
-          className={`w-full text-xs font-semibold dark:text-gray-4 ${
+          className={`w-full text-xs font-semibold ${
             classNames?.label ?? 'mb-2'
           }`}
           htmlFor={field.name}
@@ -66,7 +66,7 @@ const Input = ({
           {icon && iconPosition === 'left' && icon}
           <input
             className={`hover(:not focus):outline-none w-full rounded-md border-0 p-2 text-sm focus:border-0 focus:outline-none ${
-              classNames?.input ?? 'dark:bg-gray-5 dark:text-gray-1'
+              classNames?.input ?? ''
             } ${noBorder ? 'h-8' : 'border-0 hover:ring-0 focus:ring-0'}`}
             type={field?.type || 'text'}
             id={field?.name}

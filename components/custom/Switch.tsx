@@ -19,7 +19,7 @@ export const Switch = ({
   >
     <span
       className={`material-icons text-4xl ${
-        on ? 'text-blueGreen-light5' : 'text-gray-4'
+        on ? '' : ''
       }`}
     >
       {on ? 'toggle_on' : 'toggle_off'}

@@ -37,7 +37,7 @@ const Card = ({
 
   const theCard = () => (
     <div
-      className={`bg-newBlue-mid dark:bg-newBlue-dark1 ${
+      className={`${
         classNames.wrapper ?? ''
       } rounded-md p-2 ${sizeClass} ${
         route === '' ? 'disabled' : 'cursor-pointer'
@@ -45,7 +45,7 @@ const Card = ({
     >
       {title && (
         <div
-          className={`text-center p-2 text-lg border-b border-newBlue-mid1 ${
+          className={`text-center p-2 text-lg border-b ${
             classNames.title ?? ''
           }`}
         >

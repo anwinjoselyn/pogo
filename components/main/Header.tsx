@@ -11,16 +11,16 @@ const Header = ({ ftw }: any) => {
     toggleTheme(theme === 'dark' ? 'light' : 'dark');
   };
   return (
-    <div className="top-0 z-10 flex flex-col items-center justify-between p-4 bg-newBlue-light3 dark:bg-newBlue-mid1 lg:sticky lg:flex-row shadow-header">
+    <div className="top-0 z-10 flex flex-col items-center justify-between p-4 lg:sticky lg:flex-row">
       <BreadCrumbs ftw={ftw} />
       <div className="flex items-center pr-4">
         {name ? (
           <>
-            <span className="text-theme-text-secondary mr-2">
+            <span className="mr-2">
               Hi, {`${name}`}
             </span>
             <Link href="/profile">
-              <span className="material-icons text-theme-text-secondary hover:text-theme-text-h2 self-center cursor-pointer">
+              <span className="material-icons self-center cursor-pointer">
                 account_circle
               </span>
             </Link>

@@ -215,7 +215,7 @@ const Sidebar = ({ toggleSidebar, setToggleSidebar }: any) => {
         .map((menuItem: MenuIF) => (
           <div
             key={menuItem.key}
-            className={`text-white menu d-block w-100 pt-3 cursor-pointer ${
+            className={`menu d-block w-100 pt-3 cursor-pointer ${
               menuItem.key === menuKey || menuItem.key === openMenuKey
                 ? 'active'
                 : ''
@@ -347,7 +347,7 @@ const Sidebar = ({ toggleSidebar, setToggleSidebar }: any) => {
         <div>
           {subMenu.show ? (
             <div
-              className="text-white d-block w-100 my-4 text-center cursor-pointer"
+              className="d-block w-100 my-4 text-center cursor-pointer"
               onClick={() => setSubMenu({ ...subMenu, show: false })}
               role="presentation"
             >
@@ -363,7 +363,7 @@ const Sidebar = ({ toggleSidebar, setToggleSidebar }: any) => {
             menus.map((menuItem: MenuIF) => (
               <div
                 key={menuItem.key}
-                className="text-white d-block w-100 my-4 text-center cursor-pointer"
+                className="d-block w-100 my-4 text-center cursor-pointer"
                 onClick={() =>
                   collapsedMenuActiveItem(menuItem.key, subMenu.sideBarMenus) &&
                   hiddenOrNoChildren(menuItem)

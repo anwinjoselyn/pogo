@@ -19,7 +19,7 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
   const [selected, setSelected] = useState('normal');
   const { query } = useRouter();
   const { data } = useSWR(`/api/pokemons/${query.id}`, fetcher);
-
+  console.log('Data', data);
   return (
     <div className="p-4">
       <div className="flex">

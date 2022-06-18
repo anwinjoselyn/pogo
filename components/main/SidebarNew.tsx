@@ -74,9 +74,9 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
   };
 
   return (
-    <div className="bg-newBlue-light dark:bg-newBlue-darkest h-screen sticky top-0 shadow-exp dark:shadow-sidebar">
+    <div className="h-screen sticky top-0">
       <div
-        className={`cursor-pointer flex items-center justify-center bg-newBlue-mid1 shadow-header p-4`}
+        className={`cursor-pointer flex items-center justify-center p-4`}
         role="presentation"
         onClick={toggleSidebar}
       >
@@ -90,26 +90,26 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
         {minified ? (
           ''
         ) : (
-          <span className="text-newBlue-darkest  text-xl">PokeBubs</span>
+          <span className="text-xl">PokeBubs</span>
         )}
       </div>
       <div className="overflow-y-auto">
         {state?.sidebar?.map((menu: any) => {
-          let menuClass: string = 'text-newBlue-light5 hover:text-newBlue-light2 hover:bg-newBlue-dark';
+          let menuClass: string = '';
           if (
             state &&
             (menu.key === state.menuKey || menu.key === state.openMenuKey)
           ) {
             if (menu?.children?.length > 0) {
-              menuClass = 'text-newBlue-light2 hover:bg-newBlue-mid2';
+              menuClass = '';
             } else {
-              menuClass = 'text-newBlue-light2 hover:text-newBlue-light5';
+              menuClass = '';
             }
           }
           return (
             <div
               key={menu.key}
-              className={`cursor-pointer border-b border-newBlue-dark1 ${menuClass}`}
+              className={`cursor-pointer border-b ${menuClass}`}
               onClick={() =>
                 onMenuClick(
                   state && state.openMenuKey === menu.key ? null : menu.key,
@@ -140,10 +140,10 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
                       menu.key === state.menuKey
                     ) {
                       subMenuClass =
-                        'hover:text-white bg-newBlue-mid2 hover:bg-newBlue-dark';
+                        '';
                     } else {
                       subMenuClass =
-                        'text-theme-text-secondary hover:text-theme-text-h2';
+                        '';
                     }
                     return !submenu.hide ? (
                       <Link

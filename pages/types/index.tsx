@@ -27,7 +27,7 @@ const Types = () => {
         onSelect={(value: string) => setSelected(value)}
         classNames={{
           wrapper: 'gap-2 px-6',
-          option: 'w-40 border border-gray-300 rounded-lg p-2',
+          option: 'w-40 border rounded-lg p-2',
         }}
       />
       {selected && (
@@ -84,7 +84,7 @@ const Types = () => {
                   title={pokemon.pokemon_name}
                   classNames={{
                     wrapper:
-                      'hover:shadow-hover hover:border border-newBlue-light4',
+                      'hover:shadow-hover hover:border',
                   }}
                 >
                   <div className="flex justify-center items-center flex-col p-2">

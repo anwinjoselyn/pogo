@@ -82,7 +82,7 @@ const Pokemons = () => {
                   title={name.name}
                   classNames={{
                     wrapper:
-                      'hover:shadow-hover hover:border border-newBlue-light4',
+                      'hover:shadow-hover hover:border',
                   }}
                 >
                   <div className="flex justify-center items-center flex-col p-2">

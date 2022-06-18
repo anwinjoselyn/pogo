@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import Header from './Header';
 import Sidebar from './SidebarNew';
+import Footer from './Footer';
 
 export default function Container({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -21,7 +22,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div className="flex dark:bg-newBlue-darkest dark:text-blueGreen-light2 ">
+    <div className="flex">
       <Head>
         {/* <title>
           HiFaDD - a D&D game for Dungeon Masters and D&D aficianados
@@ -59,14 +60,15 @@ export default function Container({ children }: { children: React.ReactNode }) {
         />
       </div>
       <div
-        className={
+        className={`flex justify-between flex-col ${
           state.minified ? 'w-full' : 'w-3/4 md:w-5/6 sm:w-4/5 lg:w-11/12'
-        }
+        }`}
       >
         <Header ftw={router.pathname.includes('/hfftw')} />
-        <div className="text-blueGreen-darkest dark:text-blueGreen-light2">
+        <div className="h-full flex">
           {children}
         </div>
+        <Footer />
       </div>
       {/* <Toaster /> */}
     </div>

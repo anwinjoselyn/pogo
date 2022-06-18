@@ -76,7 +76,7 @@ const BreadCrumbs = ({ ftw }: any) => {
   }, [pathname !== '/']);
 
   return (
-    <ul className="flex items-center text-theme-text-footer">
+    <ul className="flex items-center">
       {/* <li>
         <Link href="/">Home</Link>
       </li> */}
