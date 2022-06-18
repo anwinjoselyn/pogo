@@ -67,16 +67,17 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
     setState({
       ...state,
       openMenuKey: key,
+      menuKey: key,
     });
     if (route) {
       router.replace(route);
     }
   };
-
+  console.log('state', state);
   return (
-    <div className="h-screen sticky top-0">
+    <div className="h-screen sticky top-0 shadow-exp">
       <div
-        className={`cursor-pointer flex items-center justify-center p-4`}
+        className={`cursor-pointer flex items-center justify-center h-[60px] bg-trial-header border-b border-trial-sidebar shadow-header`}
         role="presentation"
         onClick={toggleSidebar}
       >
@@ -90,7 +91,7 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
         {minified ? (
           ''
         ) : (
-          <span className="text-xl">PokeBubs</span>
+          <span className="text-xl text-trial-light">The PokeStop</span>
         )}
       </div>
       <div className="overflow-y-auto">
@@ -100,36 +101,61 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
             state &&
             (menu.key === state.menuKey || menu.key === state.openMenuKey)
           ) {
-            if (menu?.children?.length > 0) {
-              menuClass = '';
+            if (state.menuKey === menu.key) {
+              menuClass = 'bg-trial-sidebar shadow-header';
             } else {
-              menuClass = '';
+              menuClass = 'hover:bg-trial-header hover:text-trial-light2';
             }
           }
           return (
             <div
               key={menu.key}
-              className={`cursor-pointer border-b ${menuClass}`}
+              className={`cursor-pointer ${menuClass}`}
               onClick={() =>
                 onMenuClick(
-                  state && state.openMenuKey === menu.key ? null : menu.key,
+                  state &&
+                    state.openMenuKey === menu.key &&
+                    menu?.children?.length > 0
+                    ? null
+                    : menu.key,
                   menu?.children?.length === 0 ? menu.route : null
                 )
               }
               role="presentation"
             >
-              <div
-                className={`text-lg flex items-center px-2 py-5 ${
-                  minified ? 'justify-center' : ''
-                }`}
-              >
-                <span
-                  className={`material-icons text-lg ${minified ? '' : 'mr-3'}`}
+              {menu?.children?.length === 0 ? (
+                <Link key={menu.key} href={menu.route} passHref>
+                  <div
+                    className={`text-lg flex items-center px-2 py-5 ${
+                      minified ? 'justify-center' : ''
+                    }`}
+                  >
+                    <span
+                      className={`material-icons text-lg ${
+                        minified ? '' : 'mr-3'
+                      }`}
+                    >
+                      {menu.icon}
+                    </span>{' '}
+                    {!minified && menu.title}
+                  </div>
+                </Link>
+              ) : (
+                <div
+                  className={`text-lg flex items-center px-2 py-5 ${
+                    minified ? 'justify-center' : ''
+                  }`}
                 >
-                  {menu.icon}
-                </span>{' '}
-                {!minified && menu.title}
-              </div>
+                  <span
+                    className={`material-icons text-lg ${
+                      minified ? '' : 'mr-3'
+                    }`}
+                  >
+                    {menu.icon}
+                  </span>{' '}
+                  {!minified && menu.title}
+                </div>
+              )}
               {state &&
               menu.key === state.openMenuKey &&
               menu?.children?.length > 0
@@ -139,11 +165,9 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
                       submenu.key === state.subMenuKey &&
                       menu.key === state.menuKey
                     ) {
-                      subMenuClass =
-                        '';
+                      subMenuClass = '';
                     } else {
-                      subMenuClass =
-                        '';
+                      subMenuClass = '';
                     }
                     return !submenu.hide ? (
                       <Link

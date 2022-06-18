@@ -85,7 +85,7 @@ const BreadCrumbs = ({ ftw }: any) => {
         state.list &&
         state.list.length > 0 &&
         state.list.map((item: any, i: number) => (
-          <li key={item.route} className="flex items-center">
+          <li key={item.route} className="flex items-center text-trial-light2">
             {i === state.list.length - 1 ? (
               <span className="mt-1">{item.title}</span>
             ) : (

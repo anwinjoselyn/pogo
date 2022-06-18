@@ -1,5 +1,5 @@
 const Footer = () => (
-  <div className="flex justify-between px-10 text-xs sticky bottom-0 p-4">
+  <div className="flex justify-between px-10 text-xs sticky bottom-0 p-4 bg-white">
     <div className="">
       The trademarks &quot;Pokemon&quot; and &quot;Pokemon Go&quot; are owned by
       their respective trademark owners.

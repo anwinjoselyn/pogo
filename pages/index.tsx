@@ -15,7 +15,6 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex gap-2 p-4">
-        Hello
         {mainCards.map((card: any) => (
           <Card key={card.title} {...card} />
         ))}

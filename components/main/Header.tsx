@@ -1,18 +1,18 @@
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 
-import BreadCrumbs from './BreadCrumbs';
+// import BreadCrumbs from './BreadCrumbs';
 import useDarkMode from '../../hooks/useDarkMode';
 
-const Header = ({ ftw }: any) => {
+const Header = () => {
   const [theme, toggleTheme] = useDarkMode();
-  const name = 'Anwin';
+  const name = 'Guest';
   const handleModes = () => {
     toggleTheme(theme === 'dark' ? 'light' : 'dark');
   };
   return (
-    <div className="top-0 z-10 flex flex-col items-center justify-between p-4 lg:sticky lg:flex-row">
-      <BreadCrumbs ftw={ftw} />
+    <div className="top-0 z-10 flex flex-col items-center justify-end h-[60px] lg:sticky lg:flex-row bg-trial-header text-trial-light2">
+      {/* <BreadCrumbs ftw={ftw} /> */}
       <div className="flex items-center pr-4">
         {name ? (
           <>
@@ -20,14 +20,14 @@ const Header = ({ ftw }: any) => {
               Hi, {`${name}`}
             </span>
             <Link href="/profile">
-              <span className="material-icons self-center cursor-pointer">
+              <span className="material-icons self-center cursor-pointer text-black-1">
                 account_circle
               </span>
             </Link>
           </>
         ) : null}
         <span
-          className="material-icons-outlined cursor-pointer ml-2"
+          className="material-icons-outlined cursor-pointer ml-6 text-sm"
           role="presentation"
           onClick={handleModes}
         >

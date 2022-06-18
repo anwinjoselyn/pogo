@@ -19,7 +19,7 @@ const Pokemons = () => {
 
   return (
     <div className="p-4">
-      <div className="flex justify-between p-3">
+      <div className="flex justify-between p-3 sticky top-0 bg-white z-10">
         <h1 className="text-center mb-4 font-semibold text-lg">All Pokemons</h1>
         <Input
           field={{ name: 'search', placeholder: 'Search...' }}

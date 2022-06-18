@@ -14,6 +14,13 @@ module.exports = {
       openSans: ['Red Hat Mono', 'monospace'],
     },
     colors: {
+      trial: {
+        sidebar: '#84e6f8',
+        header: '#167697',
+        light: '#0EEAFF',
+        light2: '#59D8E6',
+        light3: '#04BFBF',
+      },
       new: {
         dark: {
           1: '#010608',
