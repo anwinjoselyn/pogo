@@ -57,11 +57,11 @@ const Pokemons = () => {
           .map((key) => (
             <div key={key} className="flex flex-col py-4">
               {selected === 'all' && (
-                <h2 className="text-center font-semibold text-lg mb-4">
+                <h2 className="text-center font-semibold text-lg mb-4 dark:text-new-normal-3">
                   {key}
                 </h2>
               )}
-              <div className="flex gap-4 flex-wrap">
+              <div className="flex gap-4 flex-wrap py-2">
                 {generations.generations[key]
                   .filter((name: any) =>
                     name.name.toLowerCase().includes(search.toLowerCase())
@@ -111,7 +111,7 @@ const Pokemons = () => {
                         title={name.name}
                         classNames={{
                           wrapper:
-                            'hover:shadow-hover hover:border border border-new-light-4',
+                            'hover:shadow-hover hover:border border border-new-light-4 dark:border-new-general-1',
                         }}
                       >
                         <div className="flex justify-center items-center flex-col p-2">

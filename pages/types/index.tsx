@@ -31,7 +31,7 @@ const Types = () => {
         }}
       />
       {selected && (
-        <h1 className="text-center mb-4 mt-8 font-semibold underline">All {selected} Type Pokemons</h1>
+        <h1 className="text-center mb-4 mt-8 font-semibold underline dark:text-new-normal-3">All {selected} Type Pokemons</h1>
       )}
       <div className="flex gap-4 flex-wrap mt-6">
         {pokemons?.types &&
@@ -84,7 +84,7 @@ const Types = () => {
                   title={pokemon.pokemon_name}
                   classNames={{
                     wrapper:
-                      'hover:shadow-hover hover:border border border-new-light-4',
+                      'hover:shadow-hover hover:border border border-new-light-4 dark:border-new-general-1',
                   }}
                 >
                   <div className="flex justify-center items-center flex-col p-2">

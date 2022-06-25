@@ -102,7 +102,7 @@ export const Best = () => {
                     <div>
                       {pokemon.name}
                       {pokemon.form && (
-                        <span className="text-sm text-new-light-2 ml-2">
+                        <span className="text-sm text-new-light-2 dark:text-new-normal-3 ml-2">
                           ({pokemon.form})
                         </span>
                       )}
@@ -207,7 +207,7 @@ export const Best = () => {
         />
       </div>
       {selected && (
-        <h1 className="text-center mb-4 mt-8 font-semibold underline">
+        <h1 className="text-center mb-4 mt-8 font-semibold underline dark:text-new-normal-3">
           Best {selected} Type Pokemons
         </h1>
       )}

@@ -16,7 +16,7 @@ const Table = ({
 }) => {
   return (
     <table className={`table-auto w-full ${classNames?.wrapper ?? ''}`}>
-      <thead className={`${classNames?.header ?? 'bg-new-light-1'}`}>
+      <thead className={`${classNames?.header ?? 'bg-new-light-1 dark:text-new-dark-6'}`}>
         <tr className="rounded-md">
           {headerData.map((header: any) => (
             <th key={header} className="text-left p-2">

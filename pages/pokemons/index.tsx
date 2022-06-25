@@ -18,8 +18,8 @@ const Pokemons = () => {
   const { data } = useSWR(`/api/pokemons/names`, fetcher);
 
   return (
-    <div className="p-4 text-new-dark-8">
-      <div className="flex justify-between p-3 sticky top-0 bg-white z-10">
+    <div className="p-4 text-new-dark-8 dark:text-new-light-3">
+      <div className="flex justify-between p-3 sticky top-0 bg-white dark:bg-new-dark-4 z-10">
         <h1 className="text-center mb-4 font-semibold text-lg">All Pokemons</h1>
         <Input
           field={{ name: 'search', placeholder: 'Search...' }}
@@ -32,7 +32,7 @@ const Pokemons = () => {
           onChange={(e: any) => setSearch(e.target.value)}
         />
       </div>
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex gap-4 flex-wrap py-4">
         {data?.names &&
           data.names
             .filter((name: any) =>
@@ -82,7 +82,7 @@ const Pokemons = () => {
                   title={name.name}
                   classNames={{
                     wrapper:
-                      'hover:shadow-hover hover:border border border-new-normal-5',
+                      'hover:shadow-hover hover:border border border-new-normal-5 dark:border-new-general-1',
                   }}
                 >
                   <div className="flex justify-center items-center flex-col p-2">
