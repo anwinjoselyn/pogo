@@ -32,7 +32,7 @@ export default function Container({ children }: { children: React.ReactNode }) {
         <meta
           name="title"
           property="og:title"
-          content="HiFaDD - a D&D game for Dungeon Masters and D&D aficianados"
+          content="The PogGoStop - A Pokemon Go fan app for general information about pokemons"
           key="title"
         />
         <link rel="shortcut icon" href="/images/favicon.ico" />
@@ -65,22 +65,20 @@ export default function Container({ children }: { children: React.ReactNode }) {
         />
       </div>
       <div
-        className={`flex justify-between flex-col ${
+        className={`flex justify-between flex-col dark:bg-new-dark-8 ${
           state.minified ? 'w-full' : 'w-3/4 md:w-5/6 sm:w-4/5 lg:w-11/12'
         }`}
       >
-        {/* <Header ftw={router.pathname.includes('/hfftw')} /> */}
         <span
-          className="material-icons-outlined cursor-pointer mr-6 sticky top-0 text-right z-20 pt-4"
+          className="material-icons-outlined cursor-pointer mr-6 sticky top-0 text-right z-20 pt-4 h-[60px] dark:text-new-normal-3"
           role="presentation"
           onClick={handleModes}
         >
           {theme === 'dark' ? 'light_mode' : 'dark_mode'}
         </span>
-        <div className="h-full text-new-dark-5">{children}</div>
+        <div className="h-full text-new-dark-5 dark:text-new-light-1 dark:bg-new-dark-4">{children}</div>
         <Footer />
       </div>
-      {/* <Toaster /> */}
     </div>
   );
 }

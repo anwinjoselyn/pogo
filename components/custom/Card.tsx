@@ -38,7 +38,7 @@ const Card = ({
   const theCard = () => (
     <div
       className={`${
-        classNames.wrapper ?? 'border border-new-normal-3 hover:shadow-hover'
+        classNames.wrapper ?? 'border border-new-normal-3 dark:border-new-normal-1 hover:shadow-hover'
       } rounded-md p-2 ${sizeClass} ${
         route === '' ? 'disabled' : 'cursor-pointer'
       }`}

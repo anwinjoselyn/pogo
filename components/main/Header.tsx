@@ -11,7 +11,7 @@ const Header = () => {
     toggleTheme(theme === 'dark' ? 'light' : 'dark');
   };
   return (
-    <div className="top-0 z-10 flex flex-col items-center justify-end h-[60px] lg:sticky lg:flex-row bg-trial-header text-trial-light2">
+    <div className="top-0 z-10 flex flex-col items-center justify-end h-[60px] lg:sticky lg:flex-row bg-trial-header text-trial-light2 dark:bg-new-dark-9">
       {/* <BreadCrumbs ftw={ftw} /> */}
       <div className="flex items-center pr-4">
         {name ? (

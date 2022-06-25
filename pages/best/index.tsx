@@ -3,7 +3,13 @@ import useSWR from 'swr';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-import { Switch, RadioSelect, Table, Tag, MultiSelect } from '../../components';
+import {
+  Switch,
+  RadioSelect,
+  Table,
+  Tag,
+  MultiSelect,
+} from '../../components';
 
 import fetcher from '../../libs/fetcher';
 import { types } from '../../constants/defaultValues';
@@ -201,7 +207,9 @@ export const Best = () => {
         />
       </div>
       {selected && (
-        <h1 className="text-center mb-4 mt-8 font-semibold underline">Best {selected} Type Pokemons</h1>
+        <h1 className="text-center mb-4 mt-8 font-semibold underline">
+          Best {selected} Type Pokemons
+        </h1>
       )}
       <div className="px-6">
         {pokemons && pokemons[main ? 'main' : 'general'] && (

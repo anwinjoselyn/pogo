@@ -75,7 +75,7 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
   };
   console.log('state', state);
   return (
-    <div className="h-screen sticky top-0 shadow-exp">
+    <div className="h-screen sticky top-0 shadow-exp dark:bg-new-dark-8">
       <div
         className={`cursor-pointer flex items-center justify-center h-[60px] bg-trial-header border-b border-trial-sidebar shadow-header`}
         role="presentation"
@@ -97,15 +97,12 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
       <div className="overflow-y-auto">
         {state?.sidebar?.map((menu: any) => {
           let menuClass: string = '';
-          if (
-            state &&
-            (menu.key === state.menuKey || menu.key === state.openMenuKey)
-          ) {
-            if (state.menuKey === menu.key) {
-              menuClass = 'bg-trial-header text-trial-light2 shadow-header';
-            } else {
-              menuClass = 'hover:bg-trial-header hover:text-trial-light2';
-            }
+
+          if (state.menuKey === menu.key) {
+            menuClass = 'bg-trial-header text-trial-light2 shadow-header';
+          } else {
+            menuClass =
+              'dark:text-new-light-1 hover:bg-trial-header hover:text-trial-light2';
           }
           return (
             <div
