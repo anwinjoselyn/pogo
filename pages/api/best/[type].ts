@@ -22,7 +22,6 @@ import { water } from '../../../db/best/water';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    console.log('req.query.type', req.query.type);
     switch (req.query.type) {
       case 'bug':
         res.status(200).json(bug);
