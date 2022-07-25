@@ -73,7 +73,7 @@ const Sidebar = ({ toggleSidebar, minified, ftw }: any) => {
       router.replace(route);
     }
   };
-  console.log('state', state);
+
   return (
     <div className="h-screen sticky top-0 shadow-exp dark:bg-new-dark-8">
       <div

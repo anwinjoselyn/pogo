@@ -18,8 +18,16 @@ const NoSSRImage = dynamic(
 const Pokemon = ({ imageURL }: { imageURL: any }) => {
   const [selected, setSelected] = useState('normal');
   const { query } = useRouter();
-  const { data } = useSWR(`/api/pokemons/${query.id}`, fetcher);
-  console.log('Data', data);
+  const { data } = useSWR({ url: `/api/pokemons/${query.id}` }, fetcher);
+  const { data: effectiveness } = useSWR(
+    {
+      url: '/api/counters',
+      method: 'POST',
+      body: { types: ['Fighting', 'Fire'] },
+    },
+    fetcher
+  );
+  console.log('effectiveness', effectiveness);
   return (
     <div className="p-4">
       <div className="flex">

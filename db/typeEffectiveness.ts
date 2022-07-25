@@ -1,4 +1,4 @@
-export const typeEffectiveness = {
+export const typeEffectiveness: any = {
   Bug: {
     Bug: 1.0,
     Dark: 1.6,
