@@ -16,7 +16,7 @@ const NoSSRImage = dynamic(
 const Pokemons = () => {
   const [search, setSearch] = useState('');
   const [selected, setSelected] = useState('all');
-  const { data: generations } = useSWR(`/api/generations`, fetcher);
+  const { data: generations } = useSWR({ url: `/api/generations` }, fetcher);
 
   return (
     <div className="p-4">

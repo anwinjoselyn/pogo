@@ -17,7 +17,7 @@ const NoSSRImage = dynamic(
 
 const Types = () => {
   const [selected, setSelected] = useState('Normal');
-  const { data: pokemons } = useSWR(`/api/types`, fetcher);
+  const { data: pokemons } = useSWR({ url: `/api/types` }, fetcher);
 
   return (
     <div className="p-4">
@@ -31,7 +31,9 @@ const Types = () => {
         }}
       />
       {selected && (
-        <h1 className="text-center mb-4 mt-8 font-semibold underline dark:text-new-normal-3">All {selected} Type Pokemons</h1>
+        <h1 className="text-center mb-4 mt-8 font-semibold underline dark:text-new-normal-3">
+          All {selected} Type Pokemons
+        </h1>
       )}
       <div className="flex gap-4 flex-wrap mt-6">
         {pokemons?.types &&

@@ -72,9 +72,10 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
             <Card size="large" classNames={{ body: 'p-2' }} title="Stats">
               <Info
                 title="Type"
-                content={data?.data?.type?.type.map((t: any) => (
+                content={data?.data?.type?.type.map((t: any, index: number) => (
                   <span key={t} className="pl-2">
                     {t}
+                    {index !== data?.data?.type?.type.length - 1 && ', '}
                   </span>
                 ))}
               />
