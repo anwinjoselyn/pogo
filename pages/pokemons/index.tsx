@@ -15,7 +15,7 @@ const NoSSRImage = dynamic(
 
 const Pokemons = () => {
   const [search, setSearch] = useState('');
-  const { data } = useSWR(`/api/pokemons/names`, fetcher);
+  const { data } = useSWR({ url: `/api/pokemons/names` }, fetcher);
 
   return (
     <div className="p-4 text-new-dark-8 dark:text-new-light-3">

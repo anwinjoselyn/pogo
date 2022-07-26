@@ -3,13 +3,7 @@ import useSWR from 'swr';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
-import {
-  Switch,
-  RadioSelect,
-  Table,
-  Tag,
-  MultiSelect,
-} from '../../components';
+import { Switch, RadioSelect, Table, Tag, MultiSelect } from '../../components';
 
 import fetcher from '../../libs/fetcher';
 import { types } from '../../constants/defaultValues';
@@ -30,10 +24,10 @@ export const Best = () => {
   });
 
   const { data: pokemons } = useSWR(
-    `/api/best/${selected.toLowerCase()}`,
+    { url: `/api/best/${selected.toLowerCase()}` },
     fetcher
   );
-
+  console.log('pokemons', pokemons);
   const handleSelect = (value: string) => {
     forms[value].selected = !forms[value].selected;
     setForms({ ...forms });

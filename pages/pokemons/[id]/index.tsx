@@ -4,12 +4,12 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import useSWR from 'swr';
 
-import { Card, Info, RadioSelect } from '../../components';
+import { Card, Info, RadioSelect } from '../../../components';
 
-import fetcher from '../../libs/fetcher';
+import fetcher from '../../../libs/fetcher';
 
 const NoSSRImage = dynamic(
-  () => import('../../components/custom/CustomImage'),
+  () => import('../../../components/custom/CustomImage'),
   {
     ssr: false,
   }
@@ -19,15 +19,23 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
   const [selected, setSelected] = useState('normal');
   const { query } = useRouter();
   const { data } = useSWR({ url: `/api/pokemons/${query.id}` }, fetcher);
+  console.log('data', data);
   const { data: effectiveness } = useSWR(
-    {
-      url: '/api/counters',
-      method: 'POST',
-      body: { types: ['Fighting', 'Fire'] },
-    },
+    data?.data?.type?.type
+      ? {
+          url: '/api/counters',
+          method: 'POST',
+          body: { types: data?.data?.type?.type },
+        }
+      : null,
     fetcher
   );
   console.log('effectiveness', effectiveness);
+
+  if (!data?.data?.type?.type) {
+    return null;
+  }
+
   return (
     <div className="p-4">
       <div className="flex">
@@ -257,6 +265,11 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
               )}
             </div>
           )}
+          <div className="py-4 d-flex items-center justify-center">
+            <Link href={`/pokemons/${query.id}/counters`}>
+              <a className="text-undeline">Counters</a>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
