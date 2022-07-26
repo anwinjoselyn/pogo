@@ -47,7 +47,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const keys: string[] = Object.keys(typeEffectiveness);
     const types: string[] = req.body.types;
-    console.log('types', types);
+
     const effectiveTypes: any = {};
     types.forEach((type: string) => {
       effectiveTypes[type] = {
@@ -81,16 +81,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (types.length > 1) {
       const type1 = effectiveTypes[types[0]].weak;
       const type2 = effectiveTypes[types[1]].weak;
-      console.log('type1', type1);
-      console.log('type2', type2);
       const strong1 = effectiveTypes[types[0]].strong.filter(
         (type: string) => !type2.includes(type)
       );
       const strong2 = effectiveTypes[types[1]].strong.filter(
         (type: string) => !type1.includes(type)
       );
-      console.log('strong1', strong1);
-      console.log('strong2', strong2);
       const tempStrong: any = strong1.filter((type: string) =>
         strong2.includes(type)
       );

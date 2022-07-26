@@ -5,13 +5,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import {
-  Switch,
-  RadioSelect,
-  Table,
-  Tag,
-  MultiSelect,
-} from '../../../components';
+import { Table, Tag, MultiSelect } from '../../../components';
 
 import fetcher from '../../../libs/fetcher';
 import { types } from '../../../constants/defaultValues';
@@ -24,21 +18,13 @@ const NoSSRImage = dynamic(
 );
 
 export const Best = () => {
-  const [main, setMain] = useState(true);
-  const [selected, setSelected] = useState('Normal');
   const [forms, setForms] = useState<any>({
     isFetching: true,
     data: [],
   });
   const { query } = useRouter();
   const { data } = useSWR({ url: `/api/pokemons/${query.id}` }, fetcher);
-  console.log('data', data);
 
-  const { data: pokemons } = useSWR(
-    { url: `/api/best/${selected.toLowerCase()}` },
-    fetcher
-  );
-  console.log('pokemons', pokemons);
   const { data: effectiveness } = useSWR(
     data?.data?.type?.type
       ? {
@@ -49,7 +35,7 @@ export const Best = () => {
       : null,
     fetcher
   );
-  console.log('effectiveness', effectiveness);
+
   useEffect(() => {
     if (effectiveness) {
       effectiveness.counters.forEach((counter: any) => {
@@ -211,7 +197,7 @@ export const Best = () => {
     }
     return null;
   };
-  console.log('forms', forms);
+
   if (!data?.data?.type?.type || !effectiveness || forms.isFetching) {
     return null;
   }

@@ -19,7 +19,7 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
   const [selected, setSelected] = useState('normal');
   const { query } = useRouter();
   const { data } = useSWR({ url: `/api/pokemons/${query.id}` }, fetcher);
-  console.log('data', data);
+
   const { data: effectiveness } = useSWR(
     data?.data?.type?.type
       ? {
@@ -30,7 +30,6 @@ const Pokemon = ({ imageURL }: { imageURL: any }) => {
       : null,
     fetcher
   );
-  console.log('effectiveness', effectiveness);
 
   if (!data?.data?.type?.type) {
     return null;
@@ -307,15 +306,13 @@ export async function getServerSideProps({ params }: { params: any }) {
   if (multipleForms.includes(Number(params.id))) {
     url = img + num + '_11.png';
     shinyURL = img + num + '_11_shiny.png';
-    console.log('multiple forms');
   } else if (newImages.includes(Number(params.id))) {
     url = '/pokemons/' + num + '.webp';
     shinyURL = '/pokemons/placeholder.jpeg';
-    console.log('newImages');
+
   } else {
     url = img + num + imgURLEnd + '.png';
     shinyURL = img + num + imgURLEnd + '_shiny' + '.png';
-    console.log('else');
   }
   //   img += num + imgURLEnd;
   //   const normal = img + num + imgURLEnd + '.png';

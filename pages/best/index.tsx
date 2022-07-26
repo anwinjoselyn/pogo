@@ -27,7 +27,7 @@ export const Best = () => {
     { url: `/api/best/${selected.toLowerCase()}` },
     fetcher
   );
-  console.log('pokemons', pokemons);
+
   const handleSelect = (value: string) => {
     forms[value].selected = !forms[value].selected;
     setForms({ ...forms });
